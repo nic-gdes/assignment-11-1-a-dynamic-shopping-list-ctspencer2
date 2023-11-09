@@ -26,22 +26,42 @@
     </div>
 
     <ul>
-
     </ul>
 
     <script>
 
-    var ulElement = document.querySelector('ul');
-    var inputElement = document.querySelector('input');
-    var buttonElement = document.querySelector('button');
+        var ulElement = document.querySelector('ul');
+        var inputElement = document.querySelector('input');
+        var buttonElement = document.querySelector('button');
 
-    function buttonClick () {
-        var currentValue = inputElement.value;
-        inputElement.value = '';
-        console.log ('Button clicked.')
-    }
+        function buttonClick () {
+            let currentValue = inputElement.value;
+            inputElement.value = '';
+            console.log ('Button clicked.')
 
-    buttonElement.addEventListener('click', buttonClicked);
+            var listItem = document.createElement('li');
+
+            var span = document.createElement('span');
+
+            var buttonDelete = document.createElement('button');
+
+            span.textContent = currentValue;
+            buttonDelete.textContent = "Delete";
+
+            listItem.appendChild(span);
+            listItem.appendChild(buttonDelete);
+            ulElement.appendChild(listItem)
+
+            buttonDelete.addEventListener('click', function(e) {
+                e.target.parentNode.remove();
+            });
+            
+        }
+
+        buttonElement.addEventListener('click', buttonClick);
+        
+
+    
     </script>
   </body>
 </html>
